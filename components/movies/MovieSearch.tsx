@@ -92,10 +92,9 @@ export function MovieSearch({
               <h2 className="mt-5 font-serif text-xl italic text-[#F4ECE1]/80">
                 Search by feeling, story, or idea
               </h2>
-
               <p className="mt-2 max-w-md text-sm leading-6 text-[#F4ECE1]/35">
-                Try something like "mind-bending science fiction" or
-                "funny movies about friendship".
+                Try something like &quot;mind-bending science fiction&quot; or
+                &quot;funny movies about friendship&quot;.
               </p>
             </div>
           </div>

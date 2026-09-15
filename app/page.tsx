@@ -7,6 +7,8 @@ import { Fraunces, Inter } from "next/font/google";
 import { MovieGrid } from "@/components/movies/MovieGrid";
 import { useMovies } from "@/lib/hooks/useMovies";
 
+import { Navbar } from "@/components/layout/Navbar";
+
 const display = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -97,6 +99,7 @@ export default function Home() {
     <main
       className={`${display.variable} ${body.variable} relative min-h-screen overflow-hidden bg-[#0A0705] font-sans text-[#F4ECE1]`}
     >
+      <Navbar />
       {/* Spotlight */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
         <div className="mt-[-200px] h-[600px] w-[900px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(201,166,107,0.14),transparent_65%)] blur-2xl" />

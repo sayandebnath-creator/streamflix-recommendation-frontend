@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { Film } from "lucide-react";
 import { useState } from "react";
+
 import type { Movie } from "@/types/movie";
 
 interface MovieCardProps {
@@ -18,9 +20,19 @@ export function MovieCard({ movie, posterUrl }: MovieCardProps) {
     <article className="group w-full cursor-pointer">
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl bg-white/5">
         {imageError ? (
-          <div className="flex h-full items-center justify-center bg-white/5 p-4 text-center">
-            <span className="text-sm font-medium text-white/40">
+          <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-black px-5 text-center">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
+
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+              <Film className="h-5 w-5 text-white/40" />
+            </div>
+
+            <p className="relative mt-4 line-clamp-3 text-sm font-medium text-white/70">
               {movie.title}
+            </p>
+
+            <span className="relative mt-2 text-[10px] uppercase tracking-[0.2em] text-white/25">
+              StreamFlix
             </span>
           </div>
         ) : (

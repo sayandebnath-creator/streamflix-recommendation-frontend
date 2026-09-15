@@ -133,7 +133,11 @@ export function MovieSearch({
                 </p>
               </div>
             ) : movies && movies.length > 0 ? (
-              <div className="grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                <div
+                className={`grid grid-cols-2 gap-x-5 gap-y-12 transition-opacity duration-300 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ${
+                    isFetching && !isLoading ? "opacity-50" : "opacity-100"
+                }`}
+                >
                 {movies.map((movie) => (
                   <MovieCard
                     key={movie.id}

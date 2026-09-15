@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Film } from "lucide-react";
+import { ChevronLeft, ChevronRight, Film } from "lucide-react";
 import { Fraunces, Inter } from "next/font/google";
 
 import { MovieGrid } from "@/components/movies/MovieGrid";
@@ -184,17 +184,19 @@ export default function Home() {
           >
             <MovieGrid movies={movies} />
             {pagination && pagination.total_pages > 1 && (
-              <div className="mt-14 flex items-center justify-center gap-2">
+              <div className="mt-10 flex items-center justify-center gap-1.5 sm:mt-14 sm:gap-2">
                 <button
                   type="button"
                   onClick={() => setPage((current) => current - 1)}
                   disabled={page === 1 || isFetching}
-                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm text-white/60 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                  aria-label="Previous page"
+                  className="flex h-10 items-center justify-center rounded-full border border-[#C9A66B]/20 bg-[#1C0E10]/60 px-3.5 text-sm text-[#F4ECE1]/60 transition hover:border-[#C9A66B]/40 hover:bg-[#1C0E10] hover:text-[#C9A66B] disabled:cursor-not-allowed disabled:opacity-25 sm:px-5"
                 >
-                  Previous
+                  <ChevronLeft className="h-4 w-4 sm:hidden" />
+                  <span className="hidden sm:inline">Previous</span>
                 </button>
 
-                <span className="px-4 text-sm text-white/50">
+                <span className="whitespace-nowrap px-2 text-xs text-[#F4ECE1]/45 sm:px-4 sm:text-sm">
                   Page {page} of {pagination.total_pages}
                 </span>
 
@@ -202,9 +204,11 @@ export default function Home() {
                   type="button"
                   onClick={() => setPage((current) => current + 1)}
                   disabled={page >= pagination.total_pages || isFetching}
-                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm text-white/60 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                  aria-label="Next page"
+                  className="flex h-10 items-center justify-center rounded-full border border-[#C9A66B]/20 bg-[#1C0E10]/60 px-3.5 text-sm text-[#F4ECE1]/60 transition hover:border-[#C9A66B]/40 hover:bg-[#1C0E10] hover:text-[#C9A66B] disabled:cursor-not-allowed disabled:opacity-25 sm:px-5"
                 >
-                  Next
+                  <span className="hidden sm:inline">Next</span>
+                  <ChevronRight className="h-4 w-4 sm:hidden" />
                 </button>
               </div>
             )}

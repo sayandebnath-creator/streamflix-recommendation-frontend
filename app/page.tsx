@@ -8,6 +8,7 @@ import { MovieGrid } from "@/components/movies/MovieGrid";
 import { useMovies } from "@/lib/hooks/useMovies";
 
 import { Navbar } from "@/components/layout/Navbar";
+import { useState } from "react";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -23,7 +24,8 @@ const body = Inter({
 });
 
 export default function Home() {
-  const { data, isLoading, isError, refetch, isFetching } = useMovies();
+  const [page, setPage] = useState(1);
+  const { data, isLoading, isError, refetch, isFetching } = useMovies(page);
 
   if (isLoading) {
     return (
@@ -160,7 +162,7 @@ export default function Home() {
               <div className="flex items-center gap-3 text-sm text-[#F4ECE1]/45">
                 <span>{pagination.total.toLocaleString()} films</span>
                 <span className="h-1 w-1 rounded-full bg-[#C9A66B]/30" />
-                <span>Page {pagination.page}</span>
+                <span>Page {page}</span>
                 {isFetching && (
                   <>
                     <span className="h-1 w-1 rounded-full bg-[#C9A66B]/30" />
@@ -181,6 +183,31 @@ export default function Home() {
             className="pt-12"
           >
             <MovieGrid movies={movies} />
+            {pagination && pagination.total_pages > 1 && (
+              <div className="mt-14 flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPage((current) => current - 1)}
+                  disabled={page === 1 || isFetching}
+                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm text-white/60 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                >
+                  Previous
+                </button>
+
+                <span className="px-4 text-sm text-white/50">
+                  Page {page} of {pagination.total_pages}
+                </span>
+
+                <button
+                  type="button"
+                  onClick={() => setPage((current) => current + 1)}
+                  disabled={page >= pagination.total_pages || isFetching}
+                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm text-white/60 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </motion.div>
 
           {/* Bottom catalog indicator */}

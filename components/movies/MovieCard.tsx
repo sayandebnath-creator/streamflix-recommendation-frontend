@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Film, Star } from "lucide-react";
 import { useState } from "react";
 
@@ -17,7 +18,11 @@ export function MovieCard({ movie, posterUrl }: MovieCardProps) {
   const releaseYear = new Date(movie.release_date).getFullYear();
 
   return (
-    <article className="group w-full cursor-pointer">
+    // <article className="group w-full cursor-pointer">
+    <Link
+    href={`/movies/${movie.id}`}
+    className="group block w-full cursor-pointer"
+    >
       <div className="relative aspect-[2/3] overflow-hidden rounded-sm bg-[#1C0E10] ring-1 ring-[#C9A66B]/0 transition-all duration-300 group-hover:ring-[#C9A66B]/40">
         {imageError ? (
           <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#6B2A3A]/30 via-[#1C0E10] to-[#0A0705] px-5 text-center">
@@ -69,6 +74,6 @@ export function MovieCard({ movie, posterUrl }: MovieCardProps) {
           </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

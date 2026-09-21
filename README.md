@@ -4,6 +4,8 @@ The frontend for **StreamFlix**, an AI-powered movie discovery and recommendatio
 
 Built with **Next.js 15, TypeScript, Tailwind CSS, and TanStack Query**, it provides a responsive cinematic interface for browsing movies, semantic search, movie details, and content-based recommendations.
 
+![Streamflix UI](./ss.png)
+
 ## Features
 
 - Semantic movie search using natural-language queries
